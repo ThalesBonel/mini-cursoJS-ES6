@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 - Symbol Intro</title>
+</head>
+<body>
+</body>
+
+<script>
+
+    // Symbols São unicos e IMUTÁVEIS
+
+    let foo = Symbol('name')
+    let bar = Symbol('name')
+
+    // console.log(foo == bar)
+
+    let objt = {
+        [Symbol('name')]: 'Thales',
+        [Symbol('age')]: 28,
+        city: 'SP'
+    }
+
+    const symbols = Object.getOwnPropertySymbols(objt)
+
+    const data = symbols.map(sym => objt[sym] )
+
+    console.log(data)
+</script>
+</html>

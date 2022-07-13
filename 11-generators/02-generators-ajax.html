@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 - Generators Fluxo Ajax</title>
+</head>
+<body>
+</body>
+
+<script>
+    function ajax(url) {
+        fetch(url)
+                .then(data => data.json())
+                .then(data => dados.next(data))
+    }
+
+
+    function* ajaxGen() {
+        console.log('Buscando conselhos... ')
+        const advices = yield ajax('https://api.adviceslip.com/advice')
+        console.log(advices)
+
+        console.log('Rick and Morty API test..')
+        const ram = yield ajax('https://rickandmortyapi.com/api/character')
+        console.log(ram)
+    }
+
+    const dados = ajaxGen()
+    dados.next()
+    
+</script>
+</html>
